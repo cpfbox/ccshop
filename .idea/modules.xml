@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/cc-common/cc-common.iml" filepath="$PROJECT_DIR$/cc-common/cc-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cc-manager/cc-manager.iml" filepath="$PROJECT_DIR$/cc-manager/cc-manager.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cc-manager/cc-manager-interface/cc-manager-interface.iml" filepath="$PROJECT_DIR$/cc-manager/cc-manager-interface/cc-manager-interface.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cc-manager/cc-manager-service/cc-manager-service.iml" filepath="$PROJECT_DIR$/cc-manager/cc-manager-service/cc-manager-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cc-manager/cc-manager-web/cc-manager-web.iml" filepath="$PROJECT_DIR$/cc-manager/cc-manager-web/cc-manager-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cc-parent/cc-parent.iml" filepath="$PROJECT_DIR$/cc-parent/cc-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cc-manager/ccmanagerdao/ccmanagerdao.iml" filepath="$PROJECT_DIR$/cc-manager/ccmanagerdao/ccmanagerdao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cc-manager/ccmanagerpojo/ccmanagerpojo.iml" filepath="$PROJECT_DIR$/cc-manager/ccmanagerpojo/ccmanagerpojo.iml" />
+    </modules>
+  </component>
+</project>

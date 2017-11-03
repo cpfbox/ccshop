@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="cc-common" />
+        <module name="cc-manager-interface" />
+        <module name="cc-manager-service" />
+        <module name="cc-manager-web" />
+        <module name="ccmanagerdao" />
+        <module name="ccmanagerpojo" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="cc-common" target="1.7" />
+      <module name="cc-manager" target="1.7" />
+      <module name="cc-manager-interface" target="1.7" />
+      <module name="cc-manager-service" target="1.7" />
+      <module name="cc-manager-web" target="1.7" />
+      <module name="cc-parent" target="1.7" />
+      <module name="ccmanagerdao" target="1.7" />
+      <module name="ccmanagerpojo" target="1.7" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
