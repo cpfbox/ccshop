@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cpf.ccshop.dao.TbItemCustomMapper" >
+
+    <sql id="Base_Column_List" >
+        i.id, i.title, i.sell_point as sellPoint, i.price, i.num, i.barcode,
+        i.image, i.cid, i.status, i.created, i.updated,c.name as catName
+    </sql>
+
+    <select id="countItems" resultType="int">
+        select count(1) from tb_item
+    </select>
+
+    <select id="listItemsByPage" parameterType="com.cpf.ccshop.common.dto.Page" resultType="com.cpf.ccshop.pojo.vo.TbItemCustom">
+        <!--select-->
+        <!--<include refid="Base_Column_List"/>-->
+        <!--from tb_item-->
+        <!--limit #{offset},#{rows}-->
+        select
+        <include refid="Base_Column_List"/>
+        from tb_item i
+        left join tb_item_cat c
+        on i.cid=c.id
+        ORDER BY i.id DESC
+        limit #{offset},#{rows}
+    </select>
+
+</mapper>

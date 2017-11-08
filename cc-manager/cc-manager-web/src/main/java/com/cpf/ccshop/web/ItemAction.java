@@ -1,6 +1,9 @@
 package com.cpf.ccshop.web;
 
+import com.cpf.ccshop.common.dto.Page;
+import com.cpf.ccshop.common.dto.Result;
 import com.cpf.ccshop.pojo.po.TbItem;
+import com.cpf.ccshop.pojo.vo.TbItemCustom;
 import com.cpf.ccshop.service.ItemService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,17 +34,30 @@ public class ItemAction {
         return byId;
     }
 
+//    @RequestMapping("/items")
+//    @ResponseBody
+//    public List<TbItem> listItems(){
+//        List<TbItem> list = null;
+//        try{
+//            list = itemService.listItems();
+//        }catch (Exception e){
+//            logger.error(e.getMessage(),e);
+//            e.printStackTrace();
+//        }
+//        return list;
+//
+//    }
+
     @RequestMapping("/items")
     @ResponseBody
-    public List<TbItem> listItems(){
-        List<TbItem> list = null;
+    public Result<TbItemCustom> listItemByPage(Page page){
+        Result<TbItemCustom> list = null;
         try{
-            list = itemService.listItems();
+            list = itemService.listItemByPage(page);
         }catch (Exception e){
             logger.error(e.getMessage(),e);
             e.printStackTrace();
         }
         return list;
-
     }
 }
