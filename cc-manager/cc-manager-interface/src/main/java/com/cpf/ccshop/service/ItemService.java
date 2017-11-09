@@ -14,4 +14,6 @@ public interface ItemService {
     //List<TbItem> listItems();
 
     Result<TbItemCustom> listItemByPage(Page page);
+
+    int updateBatch(List<Long> ids, byte status);
 }

@@ -8,7 +8,7 @@
     </sql>
 
     <select id="countItems" resultType="int">
-        select count(1) from tb_item
+        select count(1) from tb_item where status!=3
     </select>
 
     <select id="listItemsByPage" parameterType="com.cpf.ccshop.common.dto.Page" resultType="com.cpf.ccshop.pojo.vo.TbItemCustom">
@@ -19,8 +19,8 @@
         select
         <include refid="Base_Column_List"/>
         from tb_item i
-        left join tb_item_cat c
-        on i.cid=c.id
+        left join tb_item_cat c on i.cid=c.id
+        where i.status!=3
         ORDER BY i.id DESC
         limit #{offset},#{rows}
     </select>

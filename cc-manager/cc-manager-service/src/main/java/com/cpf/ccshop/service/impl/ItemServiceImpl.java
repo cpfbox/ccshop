@@ -5,6 +5,7 @@ import com.cpf.ccshop.common.dto.Result;
 import com.cpf.ccshop.dao.TbItemCustomMapper;
 import com.cpf.ccshop.dao.TbItemMapper;
 import com.cpf.ccshop.pojo.po.TbItem;
+import com.cpf.ccshop.pojo.po.TbItemExample;
 import com.cpf.ccshop.pojo.vo.TbItemCustom;
 import com.cpf.ccshop.service.ItemService;
 import org.slf4j.Logger;
@@ -42,6 +43,23 @@ public class ItemServiceImpl implements ItemService{
 //        }
 //        return list;
 //    }
+
+    @Override
+    public int updateBatch(List<Long> ids, byte status) {
+        int i=0;
+        try {
+            TbItem record = new TbItem();
+            record.setStatus(status);
+            TbItemExample example = new TbItemExample();
+            TbItemExample.Criteria criteria = example.createCriteria();
+            criteria.andIdIn(ids);
+            i=itemDao.updateByExampleSelective(record,example);
+        }catch (Exception e){
+            logger.error(e.getMessage(),e);
+            e.printStackTrace();
+        }
+        return i;
+    }
 
     @Override
     public Result<TbItemCustom> listItemByPage(Page page) {
