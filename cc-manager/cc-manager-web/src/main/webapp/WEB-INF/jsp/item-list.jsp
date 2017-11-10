@@ -96,6 +96,7 @@
     }]
 
     $("#tb").datagrid({
+        multiSort:true,
         toolbar:toolbar,
         url:'items',
         striped:true,
@@ -107,8 +108,8 @@
         columns:[[
             {field:'ck',checkbox:true},
             {field:'id',title:'商品编号',width:100},
-            {field:'title',title:'商品名称',width:100},
-            {field:'sellPoint',title:'卖点',width:100},
+            {field:'title',title:'商品名称',width:100,sortable:true},
+            {field:'sellPoint',title:'卖点',width:100,sortable:true},
             {field:'status',title:'状态',width:100,formatter:function (value,row,index) {
 //                console.group();
 //                console.log(value);

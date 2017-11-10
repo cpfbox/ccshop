@@ -1,5 +1,6 @@
 package com.cpf.ccshop.web;
 
+import com.cpf.ccshop.common.dto.Order;
 import com.cpf.ccshop.common.dto.Page;
 import com.cpf.ccshop.common.dto.Result;
 import com.cpf.ccshop.pojo.po.TbItem;
@@ -26,7 +27,7 @@ public class ItemAction {
     @RequestMapping(value = "/item/{id}",method = RequestMethod.GET)
     @ResponseBody
     public TbItem getById(@PathVariable("id") Long id){
-        System.out.println(id);
+//        System.out.println(id);
         TbItem byId = itemService.getById(id);
         return byId;
     }
@@ -47,10 +48,10 @@ public class ItemAction {
 
     @RequestMapping("/items")
     @ResponseBody
-    public Result<TbItemCustom> listItemByPage(Page page){
+    public Result<TbItemCustom> listItemByPage(Page page,Order order){
         Result<TbItemCustom> list = null;
         try{
-            list = itemService.listItemByPage(page);
+            list = itemService.listItemByPage(page,order);
         }catch (Exception e){
             logger.error(e.getMessage(),e);
             e.printStackTrace();

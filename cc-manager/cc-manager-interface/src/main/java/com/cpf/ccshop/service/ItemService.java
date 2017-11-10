@@ -1,5 +1,6 @@
 package com.cpf.ccshop.service;
 
+import com.cpf.ccshop.common.dto.Order;
 import com.cpf.ccshop.common.dto.Page;
 import com.cpf.ccshop.common.dto.Result;
 import com.cpf.ccshop.pojo.po.TbItem;
@@ -13,7 +14,7 @@ public interface ItemService {
 
     //List<TbItem> listItems();
 
-    Result<TbItemCustom> listItemByPage(Page page);
+    Result<TbItemCustom> listItemByPage(Page page,Order order);
 
     int updateBatch(List<Long> ids, byte status);
 }

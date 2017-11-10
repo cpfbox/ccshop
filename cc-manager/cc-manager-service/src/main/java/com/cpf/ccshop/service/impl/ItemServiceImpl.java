@@ -1,5 +1,6 @@
 package com.cpf.ccshop.service.impl;
 
+import com.cpf.ccshop.common.dto.Order;
 import com.cpf.ccshop.common.dto.Page;
 import com.cpf.ccshop.common.dto.Result;
 import com.cpf.ccshop.dao.TbItemCustomMapper;
@@ -62,13 +63,13 @@ public class ItemServiceImpl implements ItemService{
     }
 
     @Override
-    public Result<TbItemCustom> listItemByPage(Page page) {
+    public Result<TbItemCustom> listItemByPage(Page page,Order order) {
         Result<TbItemCustom> result = null;
         try{
             result = new Result<TbItemCustom>();
             int total = itemCustomDao.countItems();
             result.setTotal(total);
-            List<TbItemCustom> list = itemCustomDao.listItemsByPage(page);
+            List<TbItemCustom> list = itemCustomDao.listItemsByPage(page,order);
             result.setRows(list);
         }catch (Exception e){
             logger.error(e.getMessage(),e);
