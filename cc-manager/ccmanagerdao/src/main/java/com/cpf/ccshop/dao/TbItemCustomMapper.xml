@@ -7,8 +7,21 @@
         i.image, i.cid, i.status, i.created, i.updated,c.name as catName
     </sql>
 
+    <sql id="Where_Clause" >
+        <where>
+            i.status!=3
+            <if test="query!=null and query.title!=null and query.title!=''">
+                and i.title like "%${query.title}%"
+            </if>
+            <if test="query!=null and query.status!=null and query.status!=0">
+                and i.status = #{query.status}
+            </if>
+        </where>
+    </sql>
+
     <select id="countItems" resultType="int">
-        select count(1) from tb_item where status!=3
+        select count(1) from tb_item i
+        <include refid="Where_Clause" />
     </select>
     <!--单列查询-->
     <!--<select id="listItemsByPage" resultType="com.cpf.ccshop.pojo.vo.TbItemCustom">-->
@@ -35,6 +48,37 @@
         <!--limit #{page.offset},#{page.rows}-->
     <!--</select>-->
 
+    <!--多列查询-->
+    <!--<select id="listItemsByPage" resultType="com.cpf.ccshop.pojo.vo.TbItemCustom">-->
+        <!--&lt;!&ndash;select&ndash;&gt;-->
+        <!--&lt;!&ndash;<include refid="Base_Column_List"/>&ndash;&gt;-->
+        <!--&lt;!&ndash;from tb_item&ndash;&gt;-->
+        <!--&lt;!&ndash;limit #{offset},#{rows}&ndash;&gt;-->
+        <!--select-->
+        <!--<include refid="Base_Column_List"/>-->
+        <!--from tb_item i-->
+        <!--left join tb_item_cat c on i.cid=c.id-->
+        <!--where i.status!=3-->
+        <!--<choose>-->
+            <!--<when test="order!=null and order.sort!=null and order.order!=null and order.orderParams!=null">-->
+                <!--<foreach collection="order.orderParams" item="item" open="order by" close="" separator=",">-->
+                    <!--<choose>-->
+                        <!--<when test="item!='sellPoint desc' and item!='sellPoint asc'">-->
+                            <!--i.${item}-->
+                        <!--</when>-->
+                        <!--<otherwise>-->
+                            <!--#{item}-->
+                        <!--</otherwise>-->
+                    <!--</choose>-->
+                <!--</foreach>-->
+            <!--</when>-->
+            <!--<otherwise>-->
+                <!--ORDER BY i.id DESC-->
+            <!--</otherwise>-->
+        <!--</choose>-->
+        <!--limit #{page.offset},#{page.rows}-->
+    <!--</select>-->
+
     <select id="listItemsByPage" resultType="com.cpf.ccshop.pojo.vo.TbItemCustom">
         <!--select-->
         <!--<include refid="Base_Column_List"/>-->
@@ -44,7 +88,7 @@
         <include refid="Base_Column_List"/>
         from tb_item i
         left join tb_item_cat c on i.cid=c.id
-        where i.status!=3
+        <include refid="Where_Clause" />
         <choose>
             <when test="order!=null and order.sort!=null and order.order!=null and order.orderParams!=null">
                 <foreach collection="order.orderParams" item="item" open="order by" close="" separator=",">

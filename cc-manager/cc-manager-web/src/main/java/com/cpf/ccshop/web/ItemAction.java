@@ -5,6 +5,7 @@ import com.cpf.ccshop.common.dto.Page;
 import com.cpf.ccshop.common.dto.Result;
 import com.cpf.ccshop.pojo.po.TbItem;
 import com.cpf.ccshop.pojo.vo.TbItemCustom;
+import com.cpf.ccshop.pojo.vo.TbItemQuery;
 import com.cpf.ccshop.service.ItemService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -48,10 +49,10 @@ public class ItemAction {
 
     @RequestMapping("/items")
     @ResponseBody
-    public Result<TbItemCustom> listItemByPage(Page page,Order order){
+    public Result<TbItemCustom> listItemByPage(Page page, Order order, TbItemQuery query){
         Result<TbItemCustom> list = null;
         try{
-            list = itemService.listItemByPage(page,order);
+            list = itemService.listItemByPage(page,order,query);
         }catch (Exception e){
             logger.error(e.getMessage(),e);
             e.printStackTrace();
@@ -71,4 +72,18 @@ public class ItemAction {
         }
         return i;
     }
+
+    @RequestMapping("/item")
+    @ResponseBody
+    public int saveItem(TbItem tbItem,String content){
+        int i = 0;
+        try{
+            i = itemService.saveItem(tbItem,content);
+        }catch (Exception e){
+            logger.error(e.getMessage(),e);
+            e.printStackTrace();
+        }
+        return i;
+    }
+
 }
